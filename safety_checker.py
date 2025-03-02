@@ -29,7 +29,7 @@ class SafetyChecker:
     def load_image(self, image_path):
         return PIL.Image.open(image_path).convert("RGB")
 
-    def run(self, image_paths, error_on_all_nsfw=True):
+    def run(self, image_paths, error_on_all_nsfw=False):
         images = [self.load_image(image_path) for image_path in image_paths]
         safety_checker_input = self.feature_extractor(images, return_tensors="pt").to(
             "cuda"
